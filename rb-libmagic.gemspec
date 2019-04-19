@@ -10,9 +10,10 @@ Gem::Specification.new do |s|
   s.date     = '2019-04-20'
   s.email    = 'liamwhite@users.noreply.github.com'
   s.files    = `git ls-files`.split("\n")
+  s.license  = 'MIT'
   s.homepage = 'http://github.com/liamwhite/rb-libmagic'
   s.summary  = 'FFI binding for libmagic.'
 
   s.require_paths = %w(lib)
-  s.add_dependency 'ffi'
+  s.add_dependency 'ffi', '~> 1'
 end
