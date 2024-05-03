@@ -67,7 +67,7 @@ class Magic
     end
 
     begin
-      ObjectSpace.define_finalizer(self){ close }
+      ObjectSpace.define_finalizer(self, self.class.finalize(@cookie)) if @cookie
     rescue
     end
   end
@@ -106,8 +106,9 @@ class Magic
     @path = path
   end
 
-  def close
-    magic_close(@cookie) if @cookie
-    @cookie = nil
+  def self.finalize(cookie)
+    proc {
+      magic_close(cookie)
+    }
   end
 end
